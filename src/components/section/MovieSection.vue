@@ -39,6 +39,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../assets/scss/setting/mixins.scss";
+
 // movie__wrap
 .movie__inner {
   height: 800px;

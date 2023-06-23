@@ -95,6 +95,8 @@
 </template>
 
 <style lang="scss">
+@import "../../assets/scss/setting/mixins.scss";
+
 // footer__wrap
 .footer__wrap {
   background-color: #e7e7e7;

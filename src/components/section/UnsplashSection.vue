@@ -47,6 +47,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../assets/scss/setting/mixins.scss";
+
 // unsplash__wrap
 .unsplash__inner {
   height: 600px;

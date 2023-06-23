@@ -164,6 +164,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../assets/scss/setting/mixins.scss";
+
 // port__wrap
 .port__inner {
   .port__btn {

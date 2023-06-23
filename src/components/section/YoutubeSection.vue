@@ -75,6 +75,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../assets/scss/setting/mixins.scss";
+
 // youtube__wrap
 .youtube__inner {
   height: 600px;

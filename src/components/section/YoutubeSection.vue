@@ -109,12 +109,10 @@ export default {
 }
 
 // youtube__page
-.youtube__slider {
-  display: none;
-}
 .youtube__search {
   text-align: center;
   margin-bottom: 50px;
+  margin-top: 100px;
   input {
     border: 1px solid #e8ecf2;
     font-size: 16px;
@@ -129,18 +127,25 @@ export default {
   }
 }
 .youtube__tag {
-  ul {
+  div {
     display: flex;
     justify-content: center;
     margin-top: 100px;
     margin-bottom: 50px;
-    li {
-      a {
-        border: 1px solid #00c183;
-        padding: 10px 20px;
-        margin: 0 10px;
-        color: #00c183;
+    button {
+      border: 1px solid #00c183;
+      padding: 10px 20px;
+      margin: 0 10px;
+      color: #00c183;
+      background-color: #fff;
+      &:hover {
+        background-color: #00c183;
+        color: #fff;
       }
+    }
+    button.active {
+      background-color: #00c183; /* 선택된 태그의 배경색 */
+      color: #ffffff; /* 선택된 태그의 텍스트 색상 */
     }
   }
 }

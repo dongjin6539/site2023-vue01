@@ -1,12 +1,37 @@
 <template>
-  <div className="movie__search">
-    <h2 className="blind">검색하기</h2>
+  <div class="movie__search">
+    <h2 class="blind">검색하기</h2>
     <input
-      ref="{inputRef}"
+      ref="inputRef"
       type="search"
-      onKeyPress="{onKeyPress}"
+      v-model="searchTerm"
+      @keypress="onKeyPress"
       placeholder="영화 검색하기"
     />
-    <button type="submit">검색</button>
+    <button type="submit" @click="onClick">검색</button>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      searchTerm: "", // 검색어를 저장하는 데이터 속성
+    };
+  },
+  methods: {
+    onKeyPress(event) {
+      if (event.key === "Enter") {
+        this.handleSearch();
+      }
+    },
+    onClick() {
+      this.handleSearch();
+    },
+    handleSearch() {
+      const value = this.searchTerm; // 검색어를 데이터 속성에서 가져옴
+      this.$emit("search", value);
+    },
+  },
+};
+</script>

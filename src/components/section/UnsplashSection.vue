@@ -80,12 +80,10 @@ export default {
 }
 
 // unsplash__page
-.unsplash__slider {
-  display: none;
-}
 .unsplash__search {
   text-align: center;
   margin-bottom: 50px;
+  margin-top: 100px;
   input {
     border: 1px solid #e8ecf2;
     font-size: 16px;
@@ -100,18 +98,26 @@ export default {
   }
 }
 .unsplash__tag {
-  ul {
+  div {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     margin-top: 100px;
     margin-bottom: 50px;
-    li {
-      a {
-        border: 1px solid #4857ec;
-        padding: 10px 20px;
-        margin: 0 10px;
-        color: #4857ec;
+    button {
+      border: 1px solid #4857ec;
+      padding: 10px 20px;
+      margin: 10px 10px;
+      color: #4857ec;
+      background-color: #fff;
+      &:hover {
+        background-color: #4857ec;
+        color: #fff;
       }
+    }
+    button.active {
+      background-color: #4857ec; /* 선택된 태그의 배경색 */
+      color: #ffffff; /* 선택된 태그의 텍스트 색상 */
     }
   }
 }

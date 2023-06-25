@@ -1,5 +1,5 @@
 <template>
-  <div className="movie__cont container">
+  <div class="movie__cont container">
     <ul>
       <li v-for="(movie, index) in movies" :key="index">
         <a
@@ -7,11 +7,14 @@
           target="_blank"
         >
           <img
-            :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
+            :src="
+              movie.poster_path
+                ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                : require('@/assets/images/movie/noImage.png')
+            "
             :alt="movie.title"
           />
-          <span class="title">{{ movie.title }}</span>
-          <span class="title">{{ movie.name }}</span>
+          <span class="title">{{ movie.title || movie.name }}</span>
           <span class="star">{{ movie.vote_average }}</span>
         </a>
       </li>
@@ -36,6 +39,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: flex-end;
     margin-bottom: 100px;
     li {
       width: 24%;
@@ -51,8 +55,11 @@ export default {
       }
       .title {
         font-size: 20px;
-        display: inline-block;
+        display: block;
         padding: 3px 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
       .star {
         position: absolute;

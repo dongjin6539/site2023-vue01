@@ -99,18 +99,25 @@ export default {
   }
 }
 .movie__tag {
-  ul {
+  div {
     display: flex;
     justify-content: center;
     margin-top: 100px;
     margin-bottom: 50px;
-    li {
-      a {
-        border: 1px solid #ff3344;
-        padding: 10px 20px;
-        margin: 0 10px;
-        color: #ff3344;
+    button {
+      border: 1px solid #ff3344;
+      padding: 10px 20px;
+      margin: 0 10px;
+      color: #ff3344;
+      background-color: #fff;
+      &:hover {
+        background-color: #ff3344;
+        color: #fff;
       }
+    }
+    button.active {
+      background-color: #ff3344; /* 선택된 태그의 배경색 */
+      color: #ffffff; /* 선택된 태그의 텍스트 색상 */
     }
   }
 }

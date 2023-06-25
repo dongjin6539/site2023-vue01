@@ -1,8 +1,8 @@
 <template>
   <ContTitle title="movies" />
   <MovieSlider :movies="movies" />
-  <MovieSearch />
-  <MovieTag />
+  <MovieSearch :onSearch="search" />
+  <MovieTag :onSearch="tags" />
   <MovieCont :movies="movies" />
 </template>
 
@@ -25,27 +25,46 @@ export default {
 
   setup() {
     const movies = ref([]);
-    const searchs = ref([]);
-    const search = ref("marvel");
 
     const TopMovies = async () => {
       await fetch(
-        `https://api.themoviedb.org/3/movie/popular?api_key=d437b67f2b55e3f176bbe6232a79ad1b&language=ko-KR&query=${search.value}`
+        `https://api.themoviedb.org/3/movie/popular?api_key=d437b67f2b55e3f176bbe6232a79ad1b&language=ko-KR`
       )
         .then((response) => response.json())
         .then((result) => {
           movies.value = result.results;
-          searchs.value = result.results;
-          console.log(searchs);
         })
         .catch((error) => console.log("error", error));
+    };
+
+    const search = async (query) => {
+      await fetch(
+        `https://api.themoviedb.org/3/search/movie?api_key=d437b67f2b55e3f176bbe6232a79ad1b&language=ko-KR&query=${query}`
+      )
+        .then((response) => response.json())
+        .then((result) => {
+          movies.value = result.results;
+        })
+        .catch((error) => console.log(error));
+    };
+
+    const tags = async (query) => {
+      await fetch(
+        `${query}?api_key=d437b67f2b55e3f176bbe6232a79ad1b&language=ko-KR`
+      )
+        .then((response) => response.json())
+        .then((result) => {
+          movies.value = result.results;
+        })
+        .catch((error) => console.log(error));
     };
 
     TopMovies();
 
     return {
       movies,
-      searchs,
+      search,
+      tags,
       TopMovies,
     };
   },

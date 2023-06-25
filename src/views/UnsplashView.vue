@@ -1,8 +1,8 @@
 <template>
   <ContTitle title="unsplash" />
-  <UnsplashSlider />
-  <UnsplashSerach />
-  <UnsplashTag />
+  <UnsplashSlider :unsplashs="unsplashs" />
+  <UnsplashSerach :onSearch="search" />
+  <UnsplashTag :onSearch="search" />
   <UnsplashCont :unsplashs="unsplashs" />
 </template>
 
@@ -31,16 +31,27 @@ export default {
       )
         .then((response) => response.json())
         .then((result) => {
-          console.log(result);
           unsplashs.value = result;
         })
         .catch((error) => console.log("error", error));
+    };
+
+    const search = async (query) => {
+      await fetch(
+        `https://api.unsplash.com/search/photos?client_id=8KxfRej-WhG3bLJet9sMULT9u09loxyVYjMsOdZVKTg&per_page=30&query=${query}`
+      )
+        .then((response) => response.json())
+        .then((result) => {
+          unsplashs.value = result.results;
+        })
+        .catch((error) => console.log(error));
     };
 
     TopUnsplashs();
 
     return {
       unsplashs,
+      search,
       TopUnsplashs,
     };
   },
